@@ -4,14 +4,16 @@ public static class Arrays
     /// This function will produce an array of size 'length' starting with 'number' followed by multiples of 'number'.  
     /// For example, MultiplesOf(7, 5) will result in: {7, 14, 21, 28, 35}.
     /// </summary>
-    /// <returns>array of doubles that are the multiples of the supplied number</returns>
+    /// <param name="number">The base number to find multiples of</param>
+    /// <param name="length">The number of multiples to generate</param>
+    /// <returns>Array of doubles that are the multiples of the supplied number</returns>
     public static double[] MultiplesOf(double number, int length)
     {
         // Plan:
         // 1. Create an array of size 'length'
-        // 2. Use a for loop from 0 to length - 1
-        // 3. At each index i, store (number * (i + 1)) in the array
-        // 4. Return the resulting array
+        // 2. Loop through indices 0 to length - 1
+        // 3. Multiply the number by (i + 1) and store in the array
+        // 4. Return the result array
 
         double[] result = new double[length];
         for (int i = 0; i < length; i++)
@@ -22,16 +24,17 @@ public static class Arrays
     }
 
     /// <summary>
-    /// Rotate the 'data' to the right by the 'amount'.  
-    /// For example: {1,2,3,4,5,6,7,8,9} → rotated 3 → {7,8,9,1,2,3,4,5,6}
+    /// Rotates the list to the right by 'amount' positions.
+    /// For example: {1,2,3,4,5,6,7,8,9} → rotated by 3 → {7,8,9,1,2,3,4,5,6}
     /// </summary>
+    /// <param name="data">The list to rotate</param>
+    /// <param name="amount">How many positions to rotate</param>
     public static void RotateListRight(List<int> data, int amount)
     {
         // Plan:
-        // 1. Get the count of the list
-        // 2. Use GetRange to slice off the last 'amount' elements
-        // 3. Remove those elements from the end
-        // 4. Insert them at the beginning of the list
+        // 1. Find the tail (last 'amount' elements) using GetRange
+        // 2. Remove that tail from the list
+        // 3. Insert the tail at the front using InsertRange
 
         int count = data.Count;
         List<int> tail = data.GetRange(count - amount, amount);
@@ -40,7 +43,7 @@ public static class Arrays
     }
 
     /// <summary>
-    /// OPTIONAL: Test the above functions when running this file directly.
+    /// Test the above functions when running this file directly.
     /// </summary>
     public static void Run()
     {
@@ -48,7 +51,7 @@ public static class Arrays
         var result = MultiplesOf(3, 5);
         Console.WriteLine("[" + string.Join(", ", result) + "]");
 
-        var list = new List<int>{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        var list = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         Console.WriteLine("Before Rotate: " + string.Join(", ", list));
         RotateListRight(list, 3);
         Console.WriteLine("After Rotate : " + string.Join(", ", list));
