@@ -1,29 +1,39 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-// TODO Problem 2 - Write and run test cases and fix the code to match requirements.
-
 [TestClass]
 public class PriorityQueueTests
 {
+    /// <summary>
+    /// Test: Dequeue should return the item with the highest priority.
+    /// Items added: "A" (priority 1), "B" (priority 5), "C" (priority 3)
+    /// Expected: "B" dequeued first
+    /// </summary>
     [TestMethod]
-    // Scenario: 
-    // Expected Result: 
-    // Defect(s) Found: 
     public void TestPriorityQueue_1()
     {
-        var priorityQueue = new PriorityQueue();
-        Assert.Fail("Implement the test case and then remove this.");
+        var queue = new PriorityQueue();
+        queue.Enqueue("A", 1);
+        queue.Enqueue("B", 5);
+        queue.Enqueue("C", 3);
+
+        var result = queue.Dequeue();
+        Assert.AreEqual("B", result);
     }
 
+    /// <summary>
+    /// Test: Dequeue from multiple items with same highest priority.
+    /// Items added: "X" (priority 4), "Y" (priority 4), "Z" (priority 2)
+    /// Expected: "X" dequeued first (FIFO for tie)
+    /// </summary>
     [TestMethod]
-    // Scenario: 
-    // Expected Result: 
-    // Defect(s) Found: 
     public void TestPriorityQueue_2()
     {
-        var priorityQueue = new PriorityQueue();
-        Assert.Fail("Implement the test case and then remove this.");
-    }
+        var queue = new PriorityQueue();
+        queue.Enqueue("X", 4);
+        queue.Enqueue("Y", 4);
+        queue.Enqueue("Z", 2);
 
-    // Add more test cases as needed below.
+        var result = queue.Dequeue();
+        Assert.AreEqual("X", result);
+    }
 }
