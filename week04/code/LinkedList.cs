@@ -210,10 +210,24 @@ public class LinkedList : IEnumerable<int>
     {
         return _head != null && _tail != null;
     }
+
+    private class Node
+    {
+        public int Data;
+        public Node? Next;
+        public Node? Prev;
+
+        public Node(int value)
+        {
+            Data = value;
+        }
+    }
 }
 
-public static class IntArrayExtensionMethods {
-    public static string AsString(this IEnumerable array) {
+public static class IntArrayExtensionMethods
+{
+    public static string AsString(this IEnumerable array)
+    {
         return "<IEnumerable>{" + string.Join(", ", array.Cast<int>()) + "}";
     }
 }
